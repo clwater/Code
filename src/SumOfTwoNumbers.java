@@ -13,12 +13,12 @@ public class SumOfTwoNumbers {
     public static void main(String[] args) {
         int[] nums = new int[]{2, 3, 5, 7, 11};
         int target = 16;
-        int[] position = new Solution().twoSum(nums, target);
+        int[] position = new SumOfTwoNumbers_Solution().twoSum(nums, target);
         System.out.println("" + position[0] + position[1]);
     }
 }
 
-class Solution {
+class SumOfTwoNumbers_Solution {
     public int[] twoSum(int[] nums, int target) {
         HashMap<Integer, Integer> temp = new HashMap<>();
         int[] position = new int[2];
