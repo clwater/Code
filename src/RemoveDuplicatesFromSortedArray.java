@@ -23,6 +23,6 @@ class RemoveDuplicatesFromSortedArray_Solution {
                 index++;
             }
         }
-        return index;
+        return index +1;
     }
 }
