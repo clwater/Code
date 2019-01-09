@@ -20,16 +20,16 @@ public class SumOfTwoNumbers {
 
 class SumOfTwoNumbers_Solution {
     public int[] twoSum(int[] nums, int target) {
-        HashMap<Integer, Integer> temp = new HashMap<>();
+        HashMap<Integer, Integer> check = new HashMap<>();
         int[] position = new int[2];
         for (int i = 0; i < nums.length; i++) {
             int index = target - nums[i];
-            if (temp.containsKey(index)) {
-                position[0] = temp.get(index);
+            if (check.containsKey(index)) {
+                position[0] = check.get(index);
                 position[1] = i;
                 return position;
             } else {
-                temp.put(nums[i], i);
+                check.put(nums[i], i);
             }
         }
         return position;
