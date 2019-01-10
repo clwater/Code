@@ -35,12 +35,11 @@ class LongestSubstringWithoutRepeatingCharacters_Solution {
         Map<Character, Integer> check = new HashMap<>();
         for (int i = 0, index = 0; i < s.length(); i++) {
             if (check.containsKey(s.charAt(i))){
-                index = Math.max(index, check.get(s.charAt(i)));
+                index = Math.max(index, check.get(s.charAt(i)) + 1);
             }
             result = Math.max(result, i - index + 1);
-            check.put(s.charAt(i), i + 1 );
+            check.put(s.charAt(i), i);
         }
-
 
         return result;
     }
