@@ -34,24 +34,27 @@ public class AddingTwoLinkNumbers {
 
 class AddingTwoLinkNumbers_Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode add = new ListNode(0);
-        ListNode tempHead = add;
-        ListNode p = l1, q = l2;
+        ListNode result = new ListNode(0);
+        ListNode temp = result;
         int carry = 0;
 
-        while (p != null || q != null) {
-            int x = (p != null) ? p.val : 0;
-            int y = (q != null) ? q.val : 0;
-            int sum = carry + x + y;
+        while (l1 != null || l2 != null) {
+            int a = (l1 != null) ? l1.val : 0;
+            int b = (l2 != null) ? l2.val : 0;
+            int sum = carry + a + b;
+
             carry = sum / 10;
-            tempHead.next = new ListNode(sum % 10);
-            tempHead = tempHead.next;
-            if (p != null) p = p.next;
-            if (q != null) q = q.next;
+            temp.next = new ListNode(sum % 10);
+            temp = temp.next;
+
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
         }
+
+
         if (carry > 0) {
-            tempHead.next = new ListNode(carry);
+            temp.next = new ListNode(carry);
         }
-        return add.next;
+        return result.next;
     }
 }
