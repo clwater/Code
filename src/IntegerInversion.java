@@ -12,6 +12,7 @@
 public class IntegerInversion {
     public static void main(String[] args) {
         System.out.println(new IntegerInversion_Solution().reverse(123456789));
+        System.out.println(new IntegerInversion_Solution().reverse(-123));
         System.out.println(new IntegerInversion_Solution().reverse(Integer.MAX_VALUE + 1));
         System.out.println(new IntegerInversion_Solution().reverse(Integer.MIN_VALUE - 1));
     }
@@ -20,19 +21,19 @@ public class IntegerInversion {
 
 class IntegerInversion_Solution {
     int reverse(int x) {
-        int rev = 0;
+        int result = 0;
 
         while (x != 0) {
-            int pop = x % 10;
+            int index = x % 10;
             x /= 10;
-            if (rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) {
+            if (result > Integer.MAX_VALUE / 10 || (result == Integer.MAX_VALUE / 10 && index > 7)) {
                 return 0;
-            } else if (rev < Integer.MIN_VALUE / 10 || (x == Integer.MIN_VALUE / 10 && pop < -8)) {
+            } else if (result < Integer.MIN_VALUE / 10 || (x == Integer.MIN_VALUE / 10 && index < -8)) {
                 return 0;
             }
-            rev = rev * 10 + pop;
+            result = result * 10 + index;
         }
 
-        return rev;
+        return result;
     }
 }
