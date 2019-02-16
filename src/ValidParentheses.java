@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Stack;
 
 /**
  * 给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串，判断字符串是否有效。
@@ -30,50 +29,45 @@ import java.util.List;
  */
 public class ValidParentheses {
     public static void main(String[] args){
+        System.out.println(new ValidParentheses_Solution().isValid("]"));
         System.out.println(new ValidParentheses_Solution().isValid("()"));
         System.out.println(new ValidParentheses_Solution().isValid("()[]{}"));
         System.out.println(new ValidParentheses_Solution().isValid("(]"));
         System.out.println(new ValidParentheses_Solution().isValid("([)]"));
         System.out.println(new ValidParentheses_Solution().isValid("{[]}"));
+        System.out.println(new ValidParentheses_Solution().isValid("{[[]{}]}()"));
     }
 }
 
 class ValidParentheses_Solution {
     public boolean isValid(String s) {
-        List<Character> list = new ArrayList<>();
-        for (char c : s.toCharArray()){
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++){
+            char c = s.charAt(i);
             if (c == '(' || c == '[' || c == '{'){
-                list.add(c);
+                stack.push(c);
+            }else if (stack.empty()){
+                return false;
             }else {
-                if (list .size() == 0){
-                    return false;
-                }
-                char last = list.get(list.size() - 1);
-                switch (c){
+                switch (c) {
                     case ')':
-                        if (last == '('){
-                            list.remove(list.size() - 1);
-                        }else {
-                            return false;
-                        }
-                        break;
+                        if (stack.pop() != '('){
+                        return false;
+                    }
+                    break;
                     case ']':
-                        if (last == '['){
-                            list.remove(list.size() - 1);
-                        }else {
+                        if (stack.pop() != '[') {
                             return false;
                         }
                         break;
                     case '}':
-                        if (last == '{'){
-                            list.remove(list.size() - 1);
-                        }else {
+                        if (stack.pop() != '{') {
                             return false;
                         }
+                        break;
                 }
             }
         }
-
-        return list.size() == 0;
+        return stack.empty();
     }
 }
