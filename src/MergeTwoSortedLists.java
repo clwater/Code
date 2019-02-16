@@ -15,8 +15,10 @@ public class MergeTwoSortedLists {
         ListNode l21 = new ListNode(1);
         ListNode l22 = new ListNode(3);
         ListNode l23 = new ListNode(4);
+        ListNode l24 = new ListNode(5);
         l21.next = l22;
         l22.next = l23;
+        l23.next = l24;
 
         ListNode result = new MergeTwoSortedLists_Solution().mergeTwoLists(l11, l21);
         while (result != null){
@@ -35,38 +37,14 @@ class MergeTwoSortedLists_Solution {
             if (l1.val < l2.val){
                 result.next = new ListNode(l1.val);
                 l1 = l1.next;
-            }else if (l1.val > l2.val){
-                result.next =  new ListNode(l2.val);
-                l2 = l2.next;
             }else {
-                result.next = new ListNode(l1.val);
-                result = result.next;
-                result.next = new ListNode(l2.val);
-                l1 = l1.next;
+                result.next =  new ListNode(l2.val);
                 l2 = l2.next;
             }
             result = result.next;
         }
-        if (l1 == null){
-            result.next = l2;
-        }
-        if (l2 == null){
-            result.next = l1;
-        }
+        if (l1 == null) result.next = l2;
+        if (l2 == null) result.next = l1;
         return head.next;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
