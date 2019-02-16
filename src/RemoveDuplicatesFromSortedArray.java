@@ -16,13 +16,13 @@ class RemoveDuplicatesFromSortedArray {
 
 class RemoveDuplicatesFromSortedArray_Solution {
     public int removeDuplicates(int[] nums) {
-        int index = 0;
-        for (int j = 0; j < nums.length ; j++){
-            if (nums[index] != nums[j]){
-                nums[index + 1] = nums[j];
-                index++;
+        int result = 0;
+        for (int index = 0; index < nums.length ; index++){
+            if (nums[result] != nums[index]){
+                result++;
+                nums[result] = nums[index];
             }
         }
-        return index +1;
+        return result +1;
     }
 }
