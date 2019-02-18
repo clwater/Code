@@ -14,7 +14,8 @@
  */
 class ImplementStrstr {
     public static void main(String[] args){
-        System.out.println(new ImplementStrstr_Solution().strStr("a", "a"));
+//        System.out.println(new ImplementStrstr_Solution().strStr("a", "a"));
+        System.out.println(new ImplementStrstr_Solution().strStr("ab abcab abcabcd", "abcabcd"));
     }
 }
 
