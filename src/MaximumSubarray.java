@@ -20,11 +20,11 @@ class MaximumSubarray_Solution {
     public int maxSubArray(int[] nums) {
         int result = nums[0];
         int sum = 0;
-        for (int num : nums){
+        for (int i = 0 ; i < nums.length ; i++){
             if (sum > 0){
-                sum += num;
+                sum += nums[i];
             }else {
-                sum = num;
+                sum = nums[i];
             }
             if (sum > result){
                 result = sum;
